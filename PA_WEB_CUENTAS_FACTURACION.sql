@@ -39,9 +39,13 @@ BEGIN
             cg.factura              AS SP_PED_FOLIO,
             cg.fecha                AS SP_CTA_FECHACG,
             cg.id_cuentagto         AS idctagto,
-            cg.cliente              AS SP_CTA_CTEFACTURA,
+            cg.cliente              AS SP_CTA_CTEFACTURA
+            (select COALESCE(pedido,'')
+              into sta_cta_filecta
+              from testst.REFERENCIA
+             where referencia = pp.trafico)
 
-        LEFT JOIN ( SELECT REFERENCIA, COALESCE(pedido,'') FROM TESTST.REFERENCIA) E_RE ON (E_RE.REFERENCIA = pp.trafico) 
+--        LEFT JOIN ( SELECT REFERENCIA, COALESCE(pedido,'') FROM TESTST.REFERENCIA) E_RE ON (E_RE.REFERENCIA = pp.trafico) 
         from testsp.pedimento pp
         inner join testcg.cuentagto cg on cg.traficoori = pp.trafico     
         where pp.trafico IS NOT NULL
