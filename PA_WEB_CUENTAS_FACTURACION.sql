@@ -49,6 +49,7 @@ BEGIN
                from testcg.cuentagto
               where id_cuentagto = cg.id_cuentagto)
 
+--Mensaje de rama test: la migración aun no está completa, faltan migrar funciones 
 --        LEFT JOIN ( SELECT REFERENCIA, COALESCE(pedido,'') FROM TESTST.REFERENCIA) E_RE ON (E_RE.REFERENCIA = pp.trafico) 
         from testsp.pedimento pp
         inner join testcg.cuentagto cg on cg.traficoori = pp.trafico     
