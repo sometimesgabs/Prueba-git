@@ -43,7 +43,11 @@ BEGIN
             (select COALESCE(pedido,'')
               into sta_cta_filecta
               from testst.REFERENCIA
-             where referencia = pp.trafico)
+             where referencia = pp.trafico
+             
+             select pedido
+               from testcg.cuentagto
+              where id_cuentagto = cg.id_cuentagto)
 
 --        LEFT JOIN ( SELECT REFERENCIA, COALESCE(pedido,'') FROM TESTST.REFERENCIA) E_RE ON (E_RE.REFERENCIA = pp.trafico) 
         from testsp.pedimento pp
